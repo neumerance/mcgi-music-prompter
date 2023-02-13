@@ -1,6 +1,7 @@
 <script>
 import lyrics from "@/assets/images/lyrics.jpg";
 import Slider from "@vueform/slider";
+import { store } from '@/store.js';
 
 export default {
   components: {
@@ -9,17 +10,36 @@ export default {
   data() {
     return {
       lyrics: lyrics,
-      scrollSpeed: 0,
+      scrollSpeed: 0
     };
   },
+  computed: {
+    currentCue() {
+      return store.currentCue;
+    }
+  },
+  methods: {
+    scrollCueBack() {
+      this.$refs.cueScroll.scrollTop = 0;
+    }
+  },
+  watch: {
+    currentCue(_newCue, _oldCue) {
+      this.scrollCueBack();
+    }
+  }
 };
 </script>
 
 <template>
   <div>
-    <div class="cue-scroll">
-      <vue3-auto-scroll hide-scroll-bar :control="false" :speed="scrollSpeed">
-        <img class="cue-scroll__lyrics" :src="lyrics" />
+    <div class="cue-scroll is-flex is-justify-content-center" ref="cueScroll">
+      <div v-if="!currentCue" class="cue-scroll__nothing pt-5">
+        <h4 class="is-size-3">Nothing here yet!</h4>
+        <p class="is-size-6">Please search the song and reserve it</p>
+      </div>
+      <vue3-auto-scroll :key="currentCue.id" v-if="currentCue" hide-scroll-bar :control="false" :speed="scrollSpeed" :back-speed="0">
+        <img class="cue-scroll__lyrics" :src="currentCue.src" />
       </vue3-auto-scroll>
     </div>
     <div class="cue-controls">
