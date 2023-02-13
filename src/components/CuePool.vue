@@ -2,5 +2,15 @@
 </script>
 
 <template>
-  <h1>Cue Pool</h1>
+  <div>
+    <button class="button is-primary is-outlined">
+      Button
+    </button>
+    <button class="button is-loading">
+      Button
+    </button>
+    <button class="button" disabled>
+      Button
+    </button>
+  </div>
 </template>

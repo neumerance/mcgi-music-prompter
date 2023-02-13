@@ -5,7 +5,13 @@
 
 <template>
   <main>
-    <CuePool />
-    <CueScroller />
+    <div class="columns">
+      <div class="column">
+        <CuePool />
+      </div>
+      <div class="column is-four-fifths">
+        <CueScroller />
+      </div>
+    </div>
   </main>
 </template>
