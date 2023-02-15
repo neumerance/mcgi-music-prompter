@@ -4,16 +4,6 @@ import lyrics2 from '@/assets/images/Adaptation - Araw-araw ng Buhay Ko (Constan
 
 export const store = reactive({
   currentCue: null,
-  reservedCues: [
-    {
-      id: 1,
-      title: 'Himno # 34.jpg',
-      src: lyrics1
-    },
-    {
-      id: 2,
-      title: 'Adaptation - Araw-araw ng Buhay Ko (Constantly)',
-      src: lyrics2
-    }
-  ]
+  searchedCues: [],
+  reservedCues: []
 });
