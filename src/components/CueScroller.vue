@@ -15,7 +15,14 @@ export default {
   },
   computed: {
     currentCue() {
-      return store.currentCue;
+      if (store.currentCue) {
+        return {
+          ...store.currentCue,
+          src: `http://${import.meta.env.VITE_API_HOST}${store.currentCue.src}`
+        }
+      } else {
+        return null
+      }
     }
   },
   methods: {
