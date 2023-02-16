@@ -29,7 +29,8 @@
         store.reservedCues = store.reservedCues.filter(cue => cue.id == cueId);
       },
       fetchData() {
-        fetch(`http://192.168.0.120:5000/cues/search?keyword=${this.keyword}`)
+        console.log('env', import.meta.env);
+        fetch(`http://${import.meta.env.VITE_API_HOST}/cues/search?keyword=${this.keyword}`)
           .then((response) => response.json())
           .then((cues) => {
             store.searchedCues = cues.data.map((cue) => cue.attributes)
