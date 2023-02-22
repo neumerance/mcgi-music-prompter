@@ -15,24 +15,18 @@ export default {
   },
   computed: {
     currentCue() {
-      if (store.currentCue) {
-        return {
-          ...store.currentCue,
-          src: `http://${import.meta.env.VITE_API_HOST}${store.currentCue.src}`
-        }
-      } else {
-        return null
-      }
+      return store.currentCue
     }
   },
   methods: {
-    scrollCueBack() {
+    resetCue() {
+      this.scrollSpeed = 0;
       this.$refs.cueScroll.scrollTop = 0;
     }
   },
   watch: {
     currentCue(_newCue, _oldCue) {
-      this.scrollCueBack();
+      this.resetCue();
     }
   }
 };

@@ -1,5 +1,5 @@
 <script>
-  import { store } from '@/store.js';
+  import { store, actions } from '@/store.js';
 
   export default {
     data() {
@@ -18,25 +18,7 @@
     created() {
       this.fetchData();
     },
-    methods: {
-      setCurrentCue(cue) {
-        store.currentCue = cue;
-      },
-      reservedCue(cue) {
-        store.reservedCues = store.reservedCues.concat(cue);
-      },
-      removeCue(cueId) {
-        store.reservedCues = store.reservedCues.filter(cue => cue.id == cueId);
-      },
-      fetchData() {
-        console.log('env', import.meta.env);
-        fetch(`http://${import.meta.env.VITE_API_HOST}/cues/search?keyword=${this.keyword}`)
-          .then((response) => response.json())
-          .then((cues) => {
-            store.searchedCues = cues.data.map((cue) => cue.attributes)
-          });
-      }
-    }
+    methods: { ...actions }
   }
 </script>
 
@@ -52,8 +34,8 @@
         </p>
       </div>
       <div v-bind:key="`search-cue-${index}`" v-for="(cue, index) in searchedCues" class="panel-block is-justify-content-space-between">
-        <a class="is-block mr-3" @click="setCurrentCue(cue)">{{ cue.title }}</a>
-        <a class="is-block" @click="reservedCue(cue)">reserve</a>
+        <a class="is-block mr-3" @click="setCurrentCue(cue.id)">{{ cue.title }}</a>
+        <a class="is-block" @click="reserveCue(cue)">reserve</a>
       </div>
     </nav>
     <nav class="panel">
