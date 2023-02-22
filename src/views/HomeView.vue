@@ -6,10 +6,10 @@ import CuePool from "../components/CuePool.vue";
 <template>
   <main>
     <div class="columns">
-      <div class="column">
+      <div class="column p-0">
         <CuePool />
       </div>
-      <div class="column is-four-fifths">
+      <div class="column is-four-fifths p-0">
         <CueScroller />
       </div>
     </div>
