@@ -19,11 +19,11 @@ export const actions = {
     fetch(`http://${import.meta.env.VITE_API_HOST}/cues/${cueId}`)
       .then((response) => response.json())
       .then((cue) => {
-        store.currentCue = cues.data.attributes;
+        store.currentCue = cue.data.attributes;
       });
   },
-  fetchCues() {
-    fetch(`http://${import.meta.env.VITE_API_HOST}/cues?keyword=${this.keyword}`)
+  fetchCues(keyword) {
+    fetch(`http://${import.meta.env.VITE_API_HOST}/cues?keyword=${keyword}`)
       .then((response) => response.json())
       .then((cues) => {
         store.searchedCues = cues.data.map((cue) => cue.attributes)

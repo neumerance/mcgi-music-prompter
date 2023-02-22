@@ -2,8 +2,6 @@ version: "3.8"
 services:
   app:
     build: .
-    image: 'mcgi-music-prompter:${TAG}'
+    image: 'mcgiprodtools/fe:latest'
     ports:
-      - "8080:8080"
-    environment:
-      - VITE_API_HOST=${VITE_API_HOST}
+      - "${FE_APP_PORT}:80"

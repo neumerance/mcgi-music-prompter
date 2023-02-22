@@ -16,7 +16,7 @@
       }
     },
     created() {
-      this.fetchData();
+      this.fetchCues(null);
     },
     methods: { ...actions }
   }
@@ -30,7 +30,7 @@
       </p>
       <div class="panel-block">
         <p class="control">
-          <input v-model="keyword" class="input" type="text" placeholder="Search" @change="fetchData">
+          <input v-model="keyword" class="input" type="text" placeholder="Search" @change="fetchCues(keyword)">
         </p>
       </div>
       <div v-bind:key="`search-cue-${index}`" v-for="(cue, index) in searchedCues" class="panel-block is-justify-content-space-between">
