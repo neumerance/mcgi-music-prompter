@@ -79,8 +79,8 @@
     }
 
     &__reserve {
-      height: 45vh;
-      max-height: 45vh;
+      height: 40vh;
+      max-height: 40vh;
       overflow-y: scroll;
     }
   }
