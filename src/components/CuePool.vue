@@ -16,7 +16,7 @@
       }
     },
     created() {
-      this.fetchCues(null);
+      this.fetchCues();
     },
     methods: { ...actions }
   }

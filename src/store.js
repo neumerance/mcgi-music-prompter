@@ -22,7 +22,7 @@ export const actions = {
         store.currentCue = cue.data.attributes;
       });
   },
-  fetchCues(keyword) {
+  fetchCues(keyword = '') {
     fetch(`http://${import.meta.env.VITE_API_HOST}/cues?keyword=${keyword}`)
       .then((response) => response.json())
       .then((cues) => {
