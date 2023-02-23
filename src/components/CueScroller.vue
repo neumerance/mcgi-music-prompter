@@ -23,6 +23,7 @@ export default {
 <template>
   <Smoothie class="cue-scroll" :weight="0.02">
     <img :key="currentCue.id" v-if="currentCue" class="cue-scroll__lyrics" :src="currentCue.src" />
+    <h4 v-else class="is-size-3	has-text-weight-light has-text-centered m-5">Nothing here yet, please use the search section</h4>
   </Smoothie>
 </template>
 
